@@ -1,0 +1,30 @@
+{
+  "name": "MERNStarter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "cd client && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start -prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client \""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "concurrently": "^5.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.18",
+    "socket.io": "^2.3.0",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
