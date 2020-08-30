@@ -73,6 +73,40 @@ function Home() {
       });
   };
 
+  const loadingJSX = !compressedImage && (
+    <div>
+      {!uploadComplete && (
+        <div>
+          {uploadPercent > 0 ? (
+            <div>
+              <div className="small w-100 text-right">{uploadPercent + '%'}</div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style={{ width: uploadPercent + '%' }}
+                  aria-valuenow={uploadPercent}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
+      )}
+      {!!uploadComplete && !!compressionProcessing && (
+        <div className="w-100 d-flex align-items-center flex-wrap text-muted">
+          <span className="m-2">compressing your image, please wait</span>
+          <span className="spinner-border" style={{ width: '16px', height: '16px', borderWidth: '2px' }} role="status">
+            <span className="sr-only">Loading...</span>
+          </span>
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <div className="container py-4">
       <p className="text-center title-text">This app supports lossy compression</p>
@@ -116,26 +150,10 @@ function Home() {
               download <i className="fas fa-long-arrow-alt-down"></i>
             </a>
           )}
-          {/*  */}
-          {/* show in mobile view */}
-          {!!uploadComplete && !!compressionProcessing && (
-            <div className="w-100 d-flex d-md-none align-items-center flex-wrap text-muted">
-              <span className="m-2">compressing your image, please wait</span>
-              <span
-                className="spinner-border"
-                style={{ width: '16px', height: '16px', borderWidth: '2px' }}
-                role="status"
-              >
-                <span className="sr-only">Loading...</span>
-              </span>
-            </div>
-          )}
-          {/*  */}
-          {/*  */}
         </div>
       </form>
       <div className="row">
-        <div className="col-12 col-md-6" style={{ wordBreak: 'break-all' }}>
+        <div className="col-12 col-sm-6" style={{ wordBreak: 'break-all' }}>
           <div>
             <div>
               <strong className="mr-2">image:</strong>
@@ -148,9 +166,9 @@ function Home() {
           </div>
           <img src={filePreview} alt="" style={{ width: 300, height: 'auto' }} />
         </div>
-        <div className="col-12 col-md-6" style={{ wordBreak: 'break-all' }}>
+        <div className="col-12 col-sm-6" style={{ wordBreak: 'break-all' }}>
           {!!compressedImage && (
-            <div className="mt-3 mt-md-0">
+            <div>
               <div>
                 <div>
                   <strong className="mr-2">image:</strong>
@@ -165,47 +183,7 @@ function Home() {
               <img style={{ width: 300, height: 'auto' }} src={`data:image/jpeg;base64,${compressedImage}`} />
             </div>
           )}
-          {!compressedImage && (
-            <div>
-              {!uploadComplete && (
-                <div>
-                  {uploadPercent > 0 ? (
-                    <div>
-                      <div className="small w-100 text-right">{uploadPercent + '%'}</div>
-                      <div class="progress">
-                        <div
-                          class="progress-bar"
-                          role="progressbar"
-                          style={{ width: uploadPercent + '%' }}
-                          aria-valuenow={uploadPercent}
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                </div>
-              )}
-              {/*  */}
-              {/* show in desktop view */}
-              {!!uploadComplete && !!compressionProcessing && (
-                <div className="w-100 d-none d-md-flex align-items-center flex-wrap text-muted">
-                  <span className="m-2">compressing your image, please wait</span>
-                  <span
-                    className="spinner-border"
-                    style={{ width: '16px', height: '16px', borderWidth: '2px' }}
-                    role="status"
-                  >
-                    <span className="sr-only">Loading...</span>
-                  </span>
-                </div>
-              )}
-              {/*  */}
-              {/*  */}
-            </div>
-          )}
+          {loadingJSX}
         </div>
       </div>
     </div>
