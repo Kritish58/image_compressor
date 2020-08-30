@@ -151,6 +151,8 @@ function Home() {
             </a>
           )}
         </div>
+        {/* loader for small screen */}
+        <div className="d-block d-sm-none">{loadingJSX}</div>
       </form>
       <div className="row">
         <div className="col-12 col-sm-6" style={{ wordBreak: 'break-all' }}>
@@ -183,7 +185,7 @@ function Home() {
               <img style={{ width: 300, height: 'auto' }} src={`data:image/jpeg;base64,${compressedImage}`} />
             </div>
           )}
-          {loadingJSX}
+          <div className="d-none d-sm-block">{loadingJSX}</div>
         </div>
       </div>
     </div>
