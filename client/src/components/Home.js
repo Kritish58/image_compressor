@@ -146,15 +146,18 @@ function Home() {
               {!uploadComplete && (
                 <div>
                   {uploadPercent > 0 ? (
-                    <div class="progress">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style={{ width: uploadPercent + '%' }}
-                        aria-valuenow={uploadPercent}
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
+                    <div>
+                      <div className="small w-100 text-right">{uploadPercent + '%'}</div>
+                      <div class="progress">
+                        <div
+                          class="progress-bar"
+                          role="progressbar"
+                          style={{ width: uploadPercent + '%' }}
+                          aria-valuenow={uploadPercent}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
                     </div>
                   ) : (
                     ''
@@ -162,11 +165,15 @@ function Home() {
                 </div>
               )}
               {!!uploadComplete && !!compressionProcessing && (
-                <div className="w-100 text-center text-muted">
-                  <span className="my-2">compressing your image, please wait</span>
-                  <div className="spinner-border" style={{ width: 14, height: 14, borderRadius: 2 }} role="status">
+                <div className="w-100 d-flex align-items-center flex-wrap text-muted">
+                  <span className="m-2">compressing your image, please wait</span>
+                  <span
+                    className="spinner-border"
+                    style={{ width: '16px', height: '16px', borderWidth: '2px' }}
+                    role="status"
+                  >
                     <span className="sr-only">Loading...</span>
-                  </div>
+                  </span>
                 </div>
               )}
             </div>
