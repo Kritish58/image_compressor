@@ -143,8 +143,32 @@ function Home() {
           )}
           {!compressedImage && (
             <div>
-              {!uploadComplete && <div>{uploadPercent > 0 ? uploadPercent + '%' : ''}</div>}
-              {!!uploadComplete && !!compressionProcessing && <div>compressing your image, please wait</div>}
+              {!uploadComplete && (
+                <div>
+                  {uploadPercent > 0 ? (
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style={{ width: uploadPercent + '%' }}
+                        aria-valuenow={uploadPercent}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              )}
+              {!!uploadComplete && !!compressionProcessing && (
+                <div className="w-100 text-center text-muted">
+                  <span className="my-2">compressing your image, please wait</span>
+                  <div className="spinner-border" style={{ width: 14, height: 14, borderRadius: 2 }} role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
