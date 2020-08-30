@@ -41,7 +41,7 @@ function Home() {
     formData.append('image', fileInput);
     formData.append('quality', compressRange);
     axios
-      .post('http://localhost:4001/api/compress-image', formData, {
+      .post('/api/compress-image', formData, {
         onUploadProgress: (ProgressEvent) => {
           const { loaded, total } = ProgressEvent;
           let percent = Math.floor((loaded * 100) / total);
