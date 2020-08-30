@@ -116,10 +116,26 @@ function Home() {
               download <i className="fas fa-long-arrow-alt-down"></i>
             </a>
           )}
+          {/*  */}
+          {/* show in mobile view */}
+          {!!uploadComplete && !!compressionProcessing && (
+            <div className="w-100 d-flex d-md-none align-items-center flex-wrap text-muted">
+              <span className="m-2">compressing your image, please wait</span>
+              <span
+                className="spinner-border"
+                style={{ width: '16px', height: '16px', borderWidth: '2px' }}
+                role="status"
+              >
+                <span className="sr-only">Loading...</span>
+              </span>
+            </div>
+          )}
+          {/*  */}
+          {/*  */}
         </div>
       </form>
       <div className="row">
-        <div className="col-12 col-sm-6" style={{ wordBreak: 'break-all' }}>
+        <div className="col-12 col-md-6" style={{ wordBreak: 'break-all' }}>
           <div>
             <div>
               <strong className="mr-2">image:</strong>
@@ -132,9 +148,9 @@ function Home() {
           </div>
           <img src={filePreview} alt="" style={{ width: 300, height: 'auto' }} />
         </div>
-        <div className="col-12 col-sm-6" style={{ wordBreak: 'break-all' }}>
+        <div className="col-12 col-md-6" style={{ wordBreak: 'break-all' }}>
           {!!compressedImage && (
-            <div>
+            <div className="mt-3 mt-md-0">
               <div>
                 <div>
                   <strong className="mr-2">image:</strong>
@@ -172,8 +188,10 @@ function Home() {
                   )}
                 </div>
               )}
+              {/*  */}
+              {/* show in desktop view */}
               {!!uploadComplete && !!compressionProcessing && (
-                <div className="w-100 d-flex align-items-center flex-wrap text-muted">
+                <div className="w-100 d-none d-md-flex align-items-center flex-wrap text-muted">
                   <span className="m-2">compressing your image, please wait</span>
                   <span
                     className="spinner-border"
@@ -184,6 +202,8 @@ function Home() {
                   </span>
                 </div>
               )}
+              {/*  */}
+              {/*  */}
             </div>
           )}
         </div>
