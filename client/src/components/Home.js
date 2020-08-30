@@ -168,7 +168,7 @@ function Home() {
           </div>
           <img src={filePreview} alt="" style={{ width: 300, height: 'auto' }} />
         </div>
-        <div className="col-12 col-sm-6" style={{ wordBreak: 'break-all' }}>
+        <div className="col-12 col-sm-6 mt-3 mt-sm-0" style={{ wordBreak: 'break-all' }}>
           {!!compressedImage && (
             <div>
               <div>
