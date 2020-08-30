@@ -32,11 +32,19 @@ function Home() {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+  const initState = () => {
+    setUploadPercent(0);
+    setUploadComplete(false);
+    setCompressionProcessing(true);
+    setCompressedImage(null);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!fileInput) {
       return;
     }
+    initState();
     const formData = new FormData();
     formData.append('image', fileInput);
     formData.append('quality', compressRange);
